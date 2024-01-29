@@ -53,7 +53,10 @@ jobs:
           context: ./
           file: ./ldap-overleaf-sl/Dockerfile
           platforms: linux/amd64,linux/arm64/v8,linux/arm/v7
-          build-args: LOGIN_TEXT=username,ADMIN_IS_SYSADMIN=false
+          build-args: |
+            LOGIN_TEXT=username
+            ADMIN_IS_SYSADMIN=false
+            COLLAB_TEXT=Direct share with collaborators is enabled only for activated users!
           cache-from: type=registry,ref=ghcr.io/xavion-lux/ldap-overleaf-sl-multiplatform
           cache-to: type=inline
           push: true
