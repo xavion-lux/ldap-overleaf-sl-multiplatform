@@ -41,8 +41,8 @@ COPY sharelatex/navbar.pug      /overleaf/services/web/app/views/layout/
 COPY sharelatex/navbar-marketing.pug      /overleaf/services/web/app/views/layout/
 
 # Non LDAP User Registration for Admins
-COPY sharelatex/admin-index.pug     /overleaf/services/web/app/views/admin/index.pug
-COPY sharelatex/admin-sysadmin.pug  /tmp/admin-sysadmin.pug
+COPY /ldap-overleaf-sl/sharelatex/admin-index.pug     /overleaf/services/web/app/views/admin/index.pug
+COPY /ldap-overleaf-sl/sharelatex/admin-sysadmin.pug  /tmp/admin-sysadmin.pug
 
     ## comment out this line to prevent sed accidently remove the brackets of the email(username) field
     # sed -iE '/email@example.com/{n;N;N;d}' /overleaf/services/web/app/views/user/login.pug && \
