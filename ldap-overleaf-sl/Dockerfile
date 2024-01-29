@@ -26,7 +26,6 @@ RUN npm install -g npm && \
     apt-get -y install texlive texlive-lang-german texlive-latex-extra texlive-full texlive-science && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    mkdir /tmp
 
 # overwrite some files
 COPY /ldap-overleaf-sl/sharelatex/AuthenticationManager.js    /overleaf/services/web/app/src/Features/Authentication/
