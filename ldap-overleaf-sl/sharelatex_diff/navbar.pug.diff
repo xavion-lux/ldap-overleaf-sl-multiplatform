@@ -4,13 +4,12 @@
 < 					i.fa.fa-bars(aria-hidden="true")
 ---
 > 			button.navbar-toggle(ng-init="navCollapsed = true", ng-click="navCollapsed = !navCollapsed", ng-class="{active: !navCollapsed}", aria-label="Toggle " + translate('navigation'))
-> 				i.fa.fa-bars(aria-hidden="true")
-14,106c13,74
+>  				i.fa.fa-bars(aria-hidden="true")
+14,104c13,74
 < 		- var canDisplayAdminMenu = hasAdminAccess()
 < 		- var canDisplayAdminRedirect = canRedirectToAdminDomain()
 < 		- var canDisplaySplitTestMenu = hasFeature('saas') && (canDisplayAdminMenu || (getSessionUser() && getSessionUser().staffAccess && (getSessionUser().staffAccess.splitTestMetrics || getSessionUser().staffAccess.splitTestManagement)))
 < 		- var canDisplaySurveyMenu = hasFeature('saas') && canDisplayAdminMenu
-< 		- var featuresPageVariant = splitTestVariants && splitTestVariants['features-page']
 < 
 < 		if (typeof(suppressNavbarRight) == "undefined")
 < 			.navbar-collapse.collapse(collapse="navCollapsed")
@@ -71,15 +70,14 @@
 < 											else
 < 												li
 < 													if child.url
-< 														if !child.splitTest || child.splitTest && child.splitTest === 'features-page' && child.splitTestVariant === featuresPageVariant
-< 															a(
-< 																href=child.url,
-< 																class=child.class,
-< 																event-tracking=child.event
-< 																event-tracking-mb="true"
-< 																event-tracking-trigger="click"
-< 																event-segmentation=child.eventSegmentation
-< 															) !{translate(child.text)}
+< 														a(
+< 															href=child.url,
+< 															class=child.class,
+< 															event-tracking=child.event
+< 															event-tracking-mb="true"
+< 															event-tracking-trigger="click"
+< 															event-segmentation=child.eventSegmentation
+< 														) !{translate(child.text)}
 < 													else
 < 														| !{translate(child.text)}
 < 							else
@@ -100,69 +98,69 @@
 < 						// register link
 < 						if hasFeature('registration-page')
 ---
-> 		.navbar-collapse.collapse(collapse="navCollapsed")
-> 
-> 			ul.nav.navbar-nav.navbar-right
-> 				if (getSessionUser() && getSessionUser().isAdmin)
-> 					li
-> 						a(href="/admin") Admin
-> 
-> 
-> 				// loop over header_extras
-> 				each item in nav.header_extras
-> 					-
-> 						if ((item.only_when_logged_in && getSessionUser())
-> 							|| (item.only_when_logged_out && (!getSessionUser()))
-> 							|| (!item.only_when_logged_out && !item.only_when_logged_in && !item.only_content_pages)
-> 							|| (item.only_content_pages && (typeof(suppressNavContentLinks) == "undefined" || !suppressNavContentLinks))
-> 						){ 
-> 							var showNavItem = true
-> 						} else {
-> 							var showNavItem = false
-> 						}
-> 
-> 					if showNavItem
-> 						if item.dropdown
-> 							li.dropdown(class=item.class, dropdown)
-> 								a.dropdown-toggle(href, dropdown-toggle)
-> 									| !{translate(item.text)}
-> 									b.caret
-> 								ul.dropdown-menu
-> 									each child in item.dropdown
-> 										if child.divider
-> 											li.divider
-> 										else
-> 											li
-> 												if child.url
-> 													a(href=child.url, class=child.class) !{translate(child.text)}
-> 												else
-> 													| !{translate(child.text)}
-> 						else
-> 							li(class=item.class)
-> 								if item.url
-> 									a(href=item.url, class=item.class) !{translate(item.text)}
-> 								else
-> 									| !{translate(item.text)}
-> 
-> 				// logged out
-> 				if !getSessionUser()
-> 					// login link
-> 					li
-> 						a(href="/login") #{translate('log_in')}
-> 
-> 				// projects link and account menu
-> 				if getSessionUser()
-> 					li
-> 						a(href="/project") #{translate('Projects')}
-> 					li.dropdown(dropdown)
-> 						a.dropdown-toggle(href, dropdown-toggle)
-> 							| #{translate('Account')}
-> 							b.caret
-> 						ul.dropdown-menu
-> 							//li
-> 							//	div.subdued(ng-non-bindable) #{getUserEmail()}
-> 							//li.divider.hidden-xs.hidden-sm
-108,139c76,77
+>  		.navbar-collapse.collapse(collapse="navCollapsed")
+>  
+>  			ul.nav.navbar-nav.navbar-right
+>  				if (getSessionUser() && getSessionUser().isAdmin)
+>  					li
+>  						a(href="/admin") Admin
+>  
+>  
+>  				// loop over header_extras
+>  				each item in nav.header_extras
+>  					-
+>  						if ((item.only_when_logged_in && getSessionUser())
+>  							|| (item.only_when_logged_out && (!getSessionUser()))
+>  							|| (!item.only_when_logged_out && !item.only_when_logged_in && !item.only_content_pages)
+>  							|| (item.only_content_pages && (typeof(suppressNavContentLinks) == "undefined" || !suppressNavContentLinks))
+>  						){ 
+>  							var showNavItem = true
+>  						} else {
+>  							var showNavItem = false
+>  						}
+>  
+>  					if showNavItem
+>  						if item.dropdown
+>  							li.dropdown(class=item.class, dropdown)
+>  								a.dropdown-toggle(href, dropdown-toggle)
+>  									| !{translate(item.text)}
+>  									b.caret
+>  								ul.dropdown-menu
+>  									each child in item.dropdown
+>  										if child.divider
+>  											li.divider
+>  										else
+>  											li
+>  												if child.url
+>  													a(href=child.url, class=child.class) !{translate(child.text)}
+>  												else
+>  													| !{translate(child.text)}
+>  						else
+>  							li(class=item.class)
+>  								if item.url
+>  									a(href=item.url, class=item.class) !{translate(item.text)}
+>  								else
+>  									| !{translate(item.text)}
+>  
+>  				// logged out
+>  				if !getSessionUser()
+>  					// login link
+>  					li
+>  						a(href="/login") #{translate('log_in')}
+>  
+>  				// projects link and account menu
+>  				if getSessionUser()
+>  					li
+>  						a(href="/project") #{translate('Projects')}
+>  					li.dropdown(dropdown)
+>  						a.dropdown-toggle(href, dropdown-toggle)
+>  							| #{translate('Account')}
+>  							b.caret
+>  						ul.dropdown-menu
+>  							//li
+>  							//	div.subdued(ng-non-bindable) #{getUserEmail()}
+>  							//li.divider.hidden-xs.hidden-sm
+106,143c76,77
 < 								a(
 < 									href="/register"
 < 									event-tracking="menu-clicked-register"
@@ -181,7 +179,7 @@
 < 								event-tracking-trigger="click"
 < 								event-tracking-mb="true"
 < 								event-segmentation={ page: currentUrl }
-< 							) #{translate('log_in')}
+< 							).text-capitalize #{translate('log_in')}
 < 
 < 					// projects link and account menu
 < 					if getSessionUser()
@@ -195,23 +193,23 @@
 < 								li
 < 									div.subdued {{ usersEmail }}
 < 								li.divider.hidden-xs.hidden-sm
----
-> 								a(href="/user/settings") #{translate('Account Settings')}
-> 							if nav.showSubscriptionLink
-141,149c79,84
+< 								li
 < 									a(href="/user/settings") #{translate('Account Settings')}
 < 								if nav.showSubscriptionLink
 < 									li
 < 										a(href="/user/subscription") #{translate('subscription')}
 < 								li.divider.hidden-xs.hidden-sm
-< 								li
+---
+> 								a(href="/user/settings") #{translate('Account Settings')}
+>  							if nav.showSubscriptionLink
+145,147c79,84
 < 									form(method="POST" action="/logout")
 < 										input(name='_csrf', type='hidden', value=csrfToken)
 < 										button.btn-link.text-left.dropdown-menu-button #{translate('log_out')}
 ---
 > 									a(href="/user/subscription") #{translate('subscription')}
-> 							li.divider.hidden-xs.hidden-sm
-> 							li
-> 								form(method="POST" action="/logout")
-> 									input(name='_csrf', type='hidden', value=csrfToken)
-> 									button.btn-link.text-left.dropdown-menu-button #{translate('log_out')}
+>  							li.divider.hidden-xs.hidden-sm
+>  							li
+>  								form(method="POST" action="/logout")
+>  									input(name='_csrf', type='hidden', value=csrfToken)
+>  									button.btn-link.text-left.dropdown-menu-button #{translate('log_out')}
