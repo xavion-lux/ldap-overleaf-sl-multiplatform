@@ -25,7 +25,8 @@ RUN npm install -g npm && \
     apt-get -y install python-pygments && \
     apt-get -y install texlive texlive-lang-german texlive-latex-extra texlive-full texlive-science && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir /tmp
 
 # overwrite some files
 COPY sharelatex/AuthenticationManager.js    /overleaf/services/web/app/src/Features/Authentication/
