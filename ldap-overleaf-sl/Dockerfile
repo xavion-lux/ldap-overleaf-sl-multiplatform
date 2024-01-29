@@ -29,16 +29,16 @@ RUN npm install -g npm && \
     mkdir /tmp
 
 # overwrite some files
-COPY sharelatex/AuthenticationManager.js    /overleaf/services/web/app/src/Features/Authentication/
-COPY sharelatex/AuthenticationController.js /overleaf/services/web/app/src/Features/Authentication/
-COPY sharelatex/ContactController.js        /overleaf/services/web/app/src/Features/Contacts/
-COPY sharelatex/router.js                   /overleaf/services/web/app/src/router.js
+COPY /ldap-overleaf-sl/sharelatex/AuthenticationManager.js    /overleaf/services/web/app/src/Features/Authentication/
+COPY /ldap-overleaf-sl/sharelatex/AuthenticationController.js /overleaf/services/web/app/src/Features/Authentication/
+COPY /ldap-overleaf-sl/sharelatex/ContactController.js        /overleaf/services/web/app/src/Features/Contacts/
+COPY /ldap-overleaf-sl/sharelatex/router.js                   /overleaf/services/web/app/src/router.js
 
 # Too much changes to do inline (>10 Lines).
-COPY sharelatex/settings.pug    /overleaf/services/web/app/views/user/
-COPY sharelatex/login.pug       /overleaf/services/web/app/views/user/
-COPY sharelatex/navbar.pug      /overleaf/services/web/app/views/layout/
-COPY sharelatex/navbar-marketing.pug      /overleaf/services/web/app/views/layout/
+COPY /ldap-overleaf-sl/sharelatex/settings.pug    /overleaf/services/web/app/views/user/
+COPY /ldap-overleaf-sl/sharelatex/login.pug       /overleaf/services/web/app/views/user/
+COPY /ldap-overleaf-sl/sharelatex/navbar.pug      /overleaf/services/web/app/views/layout/
+COPY /ldap-overleaf-sl/sharelatex/navbar-marketing.pug      /overleaf/services/web/app/views/layout/
 
 # Non LDAP User Registration for Admins
 COPY /ldap-overleaf-sl/sharelatex/admin-index.pug     /overleaf/services/web/app/views/admin/index.pug
