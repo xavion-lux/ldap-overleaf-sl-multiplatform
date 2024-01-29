@@ -22,10 +22,13 @@ RUN npm install -g npm && \
     ## This variant of updateing texlive does not work
     # bash -c tlmgr install scheme-full && \
     ## try this one:
-RUN apt-get update && \
-    apt-get -y install python-pygments && \
-    apt-get -y install texlive texlive-lang-german texlive-latex-extra texlive-full texlive-science && \
-    apt-get clean 
+RUN apt-get update 
+#&& \
+RUN apt-get -y install python-pygments
+#&& \
+RUN apt-get -y install texlive texlive-lang-german texlive-latex-extra texlive-full texlive-science
+#&& \
+RUN apt-get clean 
     #&& \
 RUN rm -rf /var/lib/apt/lists/*
 
