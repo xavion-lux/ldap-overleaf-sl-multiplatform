@@ -43,7 +43,7 @@ else
 fi
 
 CONTAINER_NAME="tmp_sharelatex_for_extract_files"
-IMAGE="sharelatex/sharelatex:$VERSION"
+IMAGE="ghcr.io/xavion-lux/overleaf-multiplatform:$VERSION"
 
 echo "Starting Docker container \"$CONTAINER_NAME\" with image \"$IMAGE\"..."
 if [ ! "$(docker ps -q -f name=^/${CONTAINER_NAME}$)" ]; then

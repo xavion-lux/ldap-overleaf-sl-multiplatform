@@ -1,8 +1,7 @@
-FROM sharelatex/sharelatex:4.2.0
-# FROM sharelatex/sharelatex:latest
+FROM ghcr.io/xavion-lux/overleaf-multiplatform:latest
 # latest might not be tested 
 # e.g. the AuthenticationManager.js script had to be adapted after versions 2.3.1 
-LABEL maintainer="Simon Haller-Seeber"
+LABEL maintainer="Simon Haller-Seeber, xavion-lux"
 LABEL version="0.1"
 
 # passed from .env (via make)
