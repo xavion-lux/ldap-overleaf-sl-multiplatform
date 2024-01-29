@@ -16,16 +16,18 @@ WORKDIR /overleaf/services/web
 RUN npm install -g npm && \
     ## clean cache (might solve issue #2)
     # npm cache clean --force && \
-    npm install ldap-escape ldapts-search ldapts@3.2.4 && \
+    npm install ldap-escape ldapts-search ldapts@3.2.4 
+    #&& \
     # npm install bcrypt@5.0.0 && \
     ## This variant of updateing texlive does not work
     # bash -c tlmgr install scheme-full && \
     ## try this one:
-    apt-get update && \
+RUN apt-get update && \
     apt-get -y install python-pygments && \
     apt-get -y install texlive texlive-lang-german texlive-latex-extra texlive-full texlive-science && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get clean 
+    #&& \
+RUN rm -rf /var/lib/apt/lists/*
 
 # overwrite some files
 COPY /ldap-overleaf-sl/sharelatex/AuthenticationManager.js    /overleaf/services/web/app/src/Features/Authentication/
