@@ -26,7 +26,11 @@ RUN apt-get update
 #&& \
 RUN apt-get -y install python-pygments
 #&& \
-RUN apt-get -y install texlive texlive-lang-german texlive-latex-extra texlive-full texlive-science
+RUN apt-get -y install texlive
+RUN apt-get -y install texlive-lang-german
+RUN apt-get -y install texlive-latex-extra
+RUN apt-get -y install texlive-full
+RUN apt-get -y install texlive-science
 #&& \
 RUN apt-get clean 
     #&& \
